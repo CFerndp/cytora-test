@@ -1,4 +1,4 @@
-export const getLanguageBasedOnFileExtension = (path: string) => {
+export const getLanguageBasedOnFileExtension = (path: string = '') => {
   const extension = path.split('.').pop();
   switch (extension) {
     case 'js':

@@ -7,7 +7,7 @@ type EditorProps = {
 };
 
 export const Editor: React.FC<EditorProps> = ({ className }) => {
-  const { value, language } = useSelectedFile();
+  const { value, language, onChange } = useSelectedFile();
 
   return (
     <BaseEditor
@@ -15,6 +15,7 @@ export const Editor: React.FC<EditorProps> = ({ className }) => {
       language={language}
       defaultValue={'// Write your code here'}
       value={value}
+      onChange={onChange}
     />
   );
 };
