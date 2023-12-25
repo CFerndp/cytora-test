@@ -1,6 +1,5 @@
 import React from 'react';
 import BaseEditor from '@monaco-editor/react';
-import * as S from '@/components/Editor/styles';
 import { useFiles } from '@/contexts/FileContext/FileContext';
 
 type EditorProps = {
@@ -9,12 +8,14 @@ type EditorProps = {
 
 export const Editor: React.FC<EditorProps> = ({ className }) => {
   const { selectedFile } = useFiles();
+  console.log(selectedFile);
 
   return (
     <BaseEditor
       wrapperProps={{ className }}
       language="javascript"
-      defaultValue={selectedFile?.contents || '// Write your code here'}
+      defaultValue={'// Write your code here'}
+      value={selectedFile.contents}
     />
   );
 };

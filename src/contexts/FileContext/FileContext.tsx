@@ -7,16 +7,24 @@ import defaultFiles from '@/defaultFiles';
 type FileContextType = {
   files: File[];
   selectedFile?: File;
+  setSelectedFile: (path: string) => void;
 };
 
-export const FileContext = createContext<FileContextType>({ files: [] });
+export const FileContext = createContext<FileContextType>({
+  files: [],
+  setSelectedFile: () => {}
+});
 
 export const FileProvider = FileContext.Provider;
 
 export const useFileContextInitializer = () => {
-  const [files] = useState(defaultFiles);
+  const [selectedFile, setFile] = useState<File | null>();
 
-  return { files };
+  const setSelectedFile = (path: string) => {
+    setFile(defaultFiles.find(file => file.path === path));
+  };
+
+  return { files: defaultFiles, selectedFile, setSelectedFile };
 };
 
 export const useFiles = () => useContext(FileContext);

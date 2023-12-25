@@ -12,7 +12,7 @@ type HeaderProps = {
 export const Header: React.FC<HeaderProps> = ({ className }) => {
   return (
     <S.Header className={className}>
-      <AppBar position="static" variant="outlined">
+      <AppBar position="static" variant="elevation">
         <Toolbar>
           <Typography variant="h6" component="h1">
             Code Editor
