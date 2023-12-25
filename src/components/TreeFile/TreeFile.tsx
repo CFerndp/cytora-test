@@ -2,6 +2,8 @@ import React from 'react';
 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { getIcon } from 'seti-icons';
+
 import { TreeView } from '@mui/x-tree-view/TreeView';
 import { TreeItem } from '@mui/x-tree-view/TreeItem';
 
@@ -15,7 +17,7 @@ type TreeFileProps = {
   className?: string;
 };
 
-const renderTree = (nodes: Node[], onClickFile) =>
+const renderTree = (nodes: Node[], onClickFile: (path: string) => void) =>
   nodes
     .sort((a, b) => {
       if ((a.isFile && b.isFile) || (!a.isFile && !b.isFile)) {
@@ -28,11 +30,19 @@ const renderTree = (nodes: Node[], onClickFile) =>
     })
     .map(node => {
       if (node.isFile) {
+        const { svg, color } = getIcon(node.name);
+
         return (
           <TreeItem
             key={node.name}
             nodeId={node.name}
             label={node.name}
+            icon={
+              <S.FileIcon
+                fill={color}
+                dangerouslySetInnerHTML={{ __html: svg }}
+              />
+            }
             onClick={() => onClickFile(node.path)}
           />
         );
