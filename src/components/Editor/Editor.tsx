@@ -1,21 +1,20 @@
 import React from 'react';
 import BaseEditor from '@monaco-editor/react';
-import { useFiles } from '@/contexts/FileContext/FileContext';
+import { useSelectedFile } from '@/components/Editor/hooks';
 
 type EditorProps = {
   className?: string; // Monaco editor applies a wrapper over the editor. Base className is used on that wrapper
 };
 
 export const Editor: React.FC<EditorProps> = ({ className }) => {
-  const { selectedFile } = useFiles();
-  console.log(selectedFile);
+  const { value, language } = useSelectedFile();
 
   return (
     <BaseEditor
       wrapperProps={{ className }}
-      language="javascript"
+      language={language}
       defaultValue={'// Write your code here'}
-      value={selectedFile.contents}
+      value={value}
     />
   );
 };
