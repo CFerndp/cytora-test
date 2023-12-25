@@ -1,10 +1,13 @@
 import styled from '@emotion/styled';
 import { Editor as BaseEditor } from '@/components/Editor/Editor';
 import { Header as BaseHeader } from './partials/Header/Header';
+import { TreeFile as BaseTreeFile } from '@/components/TreeFile/TreeFile';
 
 export const Layout = styled.div`
   width: 100%;
   height: 100%;
+
+  min-width: 600px;
 
   display: grid;
   grid-template-columns: 20% 80%;
@@ -14,7 +17,7 @@ export const Layout = styled.div`
   grid-template-areas: 'header header' 'menu editor';
 `;
 
-export const Title = styled.h3`
+export const TreeFile = styled(BaseTreeFile)`
   grid-area: menu;
 `;
 

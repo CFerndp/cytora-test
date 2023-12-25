@@ -6,10 +6,8 @@ import { Header } from '@/components/Layout/partials/Header/Header';
 export const Layout = () => {
   return (
     <S.Layout>
-      <S.Header>
-        <Header />
-      </S.Header>
-      <S.Title>hello there</S.Title>
+      <S.Header />
+      <S.TreeFile />
       <S.Editor />
     </S.Layout>
   );
