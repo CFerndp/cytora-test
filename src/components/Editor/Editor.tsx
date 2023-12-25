@@ -11,7 +11,7 @@ export const Editor: React.FC<EditorProps> = ({ className }) => {
 
   return (
     <BaseEditor
-      wrapperProps={{ className }}
+      wrapperProps={{ className, 'data-testid': 'editor' }}
       language={language}
       defaultValue={'// Write your code here'}
       value={value}
