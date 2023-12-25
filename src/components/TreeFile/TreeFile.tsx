@@ -43,12 +43,17 @@ const renderTree = (nodes: Node[], onClickFile: (path: string) => void) =>
                 dangerouslySetInnerHTML={{ __html: svg }}
               />
             }
+            data-testid={`file-${node.name}`}
             onClick={() => onClickFile(node.path)}
           />
         );
       }
       return (
-        <TreeItem key={node.name} nodeId={node.name} label={node.name}>
+        <TreeItem
+          key={node.name}
+          nodeId={node.name}
+          label={node.name}
+          data-testid={`folder-${node.name}`}>
           {renderTree(node.children || [], onClickFile)}
         </TreeItem>
       );
@@ -58,7 +63,7 @@ export const TreeFile: React.FC<TreeFileProps> = ({ className }) => {
   const { rootNode, onClickFile } = useFileSystem();
 
   return (
-    <S.TreeFile className={className}>
+    <S.TreeFile className={className} data-testid="tree-file">
       <TreeView
         aria-label="file system navigator"
         defaultCollapseIcon={<ExpandMoreIcon />}
